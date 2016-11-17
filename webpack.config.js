@@ -1,6 +1,5 @@
-var HTMLWebpackPlugin = require('html-webpack-plugin');
-// import HTMLWebpackPlugin from 'html-webpack-plugin';
-var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
     template: __dirname + '/app/index.html',
     filename: 'index.html',
     inject:'body'
@@ -9,6 +8,10 @@ var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 module.exports = {
 
     entry: __dirname + '/app/index.js',
+
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
 
     module: {
         loaders: [
