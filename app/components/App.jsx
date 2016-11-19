@@ -5,15 +5,19 @@ import store from '../store/store';
 
 // import SearchField from '../components/search/input';
 import ResultsList from './results-list/results-list';
+import Search from './search/input';
 
 const App = () => (
     <div>
-        <section>
-            <ResultsList handleSelection={console.log('click')} items={['first','second']} />
-        </section>
         <h1> React SoundCloud </h1>
+        <section>
+            <Search />
+            {/*<ResultsList handleSelection={console.log('click')} items={['first','second']} />*/}
+        </section>
     </div>
 );
+
+
 
 render(
     <Provider store={ store }>

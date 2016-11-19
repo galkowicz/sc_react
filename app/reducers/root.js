@@ -1,11 +1,27 @@
-import { ADD_SEARCH, CHANGE_DISPLAY } from '../consts/action-types';
+import { FETCH_MUSIC,FETCH_MUSIC_REJECTED,FETCH_MUSIC_FULFILLED,
+    CHANGE_DISPLAY } from '../consts/action-types';
 
-const reducer = (state, action) => {
+const reducer = (state = {
+    searches:[],
+    fetching: false,
+    fetched: false,
+    error: null
+}, action) => {
 
     switch (action.type) {
 
-        case ADD_SEARCH:
-            return action.search;
+        case FETCH_MUSIC:
+            return Object.assign({}, state, {fetching: true});
+
+        case FETCH_MUSIC_REJECTED:
+            return Object.assign({}, state, {fetching: false, error: action.payload});
+
+        case FETCH_MUSIC_FULFILLED:
+            return Object.assign({}, state, {
+                fetching: false,
+                fetched: true,
+                searches: action.payload
+            });
 
         case CHANGE_DISPLAY:
             return Object.assign({}, state, {

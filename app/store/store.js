@@ -1,16 +1,14 @@
 import { applyMiddleware, createStore } from 'redux';
 import rootReducer from '../reducers/root';
-import thunk from "redux-thunk";
-import axios from "axios";
+
 import createLogger from "redux-logger"
+import thunk from "redux-thunk";
+import promiseMiddleware from 'redux-promise-middleware';
+
+
 
 const logger = createLogger();
 
-const middleware = applyMiddleware(thunk, logger);
+const middleware = applyMiddleware(promiseMiddleware(), thunk, logger);
 
-const initialState = {
-    display: 'LIST',
-    searches: [ ]
-};
-
-export default createStore(rootReducer,initialState , middleware);
+export default createStore(rootReducer, middleware);
