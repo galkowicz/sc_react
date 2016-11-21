@@ -9,9 +9,9 @@ import Search from './search/input';
 
 const App = () => (
     <div>
-        <h1> React SoundCloud </h1>
+        <h1> React Search and Destroy </h1>
         <section>
-            <Search />
+            <Search store={store} />
             {/*<ResultsList handleSelection={console.log('click')} items={['first','second']} />*/}
         </section>
     </div>
