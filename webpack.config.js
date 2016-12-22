@@ -1,4 +1,5 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
     template: __dirname + '/app/index.html',
     filename: 'index.html',
@@ -22,6 +23,10 @@ module.exports = {
                 query: {
                     presets: ['es2015', 'react']
                 }
+            },
+            {
+                test: /\.scss$/,
+                loader: ExtractTextPlugin.extract('css!sass')
             }
         ]
     },
@@ -31,7 +36,12 @@ module.exports = {
         path: __dirname + '/dist'
     },
 
-    plugins:[HTMLWebpackPluginConfig],
+    plugins:[
+        HTMLWebpackPluginConfig,
+        new ExtractTextPlugin('style.css', {
+            allChunks: true
+        })
+    ],
 
     devServer: {
         inline:true,
