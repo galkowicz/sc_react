@@ -1,20 +1,21 @@
 import React from 'react';
 import '../../sass/middle.scss';
+import {CLIENT_ID} from '../../consts/consts';
 
-const Widget = (props) => {
-    // const items = props.items;
-    // const listItem = items.map((item) =>
-    //     <li onClick={() => this.handleSelection(item)} >{item}</li>
-    // );
-    return (
-        <div className="widget">
-        <div id="target"> </div>
-        </div>
-    );
-};
+class Widget extends React.Component {
 
-Widget.propTypes = {
-    // items: React.PropTypes.array.isRequired
-};
+    componentWillMount() {
+        SC.initialize({
+            client_id: CLIENT_ID
+        });
+    }
+
+    render(){
+        return (
+            <div className="widget"></div>
+        )
+    }
+
+}
 
 export default Widget;

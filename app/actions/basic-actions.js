@@ -1,12 +1,12 @@
 import axios from 'axios';
-
 import { FETCH_MUSIC, CHANGE_DISPLAY , FETCH_MUSIC_FULFILLED,
     FETCH_MUSIC_REJECTED} from '../consts/action-types';
+import {CLIENT_ID} from '../consts/consts';
 
 export function fetchMusic(title) {
     return function (dispatch) {
         dispatch(requestMusic(title));
-        return axios.get('http://api.soundcloud.com/tracks.json?client_id=d652006c469530a4a7d6184b18e16c81&q=' + title + '&limit=50')
+        return axios.get('http://api.soundcloud.com/tracks.json?client_id='+ CLIENT_ID + title + '&limit=50')
             .then(response => response.data)
             .then(data =>
                 dispatch(receiveMusic(title, data))
