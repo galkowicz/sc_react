@@ -1,12 +1,14 @@
 import { FETCH_MUSIC,FETCH_MUSIC_REJECTED,FETCH_MUSIC_FULFILLED,
     CHANGE_DISPLAY } from '../consts/action-types';
 
-const reducer = (state = {
+const initialState = {
     searches:[],
     fetching: false,
     fetched: false,
     error: null
-}, action) => {
+};
+
+const reducer = (state = initialState, action) => {
 
     switch (action.type) {
 

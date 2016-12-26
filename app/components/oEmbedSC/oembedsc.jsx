@@ -2,7 +2,7 @@ import React from 'react';
 import '../../sass/middle.scss';
 import {CLIENT_ID} from '../../consts/consts';
 
-class Widget extends React.Component {
+export default class Widget extends React.Component {
 
     componentWillMount() {
         SC.initialize({
@@ -17,5 +17,3 @@ class Widget extends React.Component {
     }
 
 }
-
-export default Widget;
